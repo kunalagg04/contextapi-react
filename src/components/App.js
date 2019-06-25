@@ -1,5 +1,7 @@
 import "./App.css";
 import React from 'react';
+import LanguageContext from '../contexts/LanguageContext';
+import UserForm from '../components/UserForm';
 
 class App extends React.Component {
 
@@ -16,12 +18,14 @@ class App extends React.Component {
                 <i onClick={() => this.onLanguageChange('English') }    class="fas fa-flag"></i>
                 <i onClick = {() => this.onLanguageChange('Dutch') }   class="far fa-flag"></i>
                 <br></br>
-                {this.state.language}
+                <LanguageContext.Provider value={this.state.language}>
+                    <UserForm></UserForm>
+                </LanguageContext.Provider>
             </div>
-        )
+        );
     }
 
 
 }
 
-export default App;
+export default App; 
